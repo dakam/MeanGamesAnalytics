@@ -1,0 +1,42 @@
+<!-- <a routerLink="/" class="nav-link">Home</a>
+<a routerLink="/games" class="nav-link">Games</a> -->
+
+<nav  class="navbar navbar-expand-lg navbar-fixed-top bg-dark">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" >MeanGames</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li ng-class="vm.isActiveTab('')" class="active"><a routerLink="/">Home</a></li>
+          <li ng-class="vm.isActiveTab('games')"><a routerLink="/games">Games</a></li>
+          <li *ngIf="!isLoggedIn()" ng-class="vm.isActiveTab('register')"><a routerLink="/register">Register</a></li>
+          <li *ngIf="isLoggedIn()" ng-class="vm.isActiveTab('Profile')"><a routerLink="/profile">Profile</a></li>
+        </ul>
+         <div class="col-xs-6">
+          <form *ngIf="!isLoggedIn()" class="navbar-form navbar-right" role="login" #loginForm="ngForm"  (ngSubmit)="loginUser(loginForm)">
+            <div class="form-group" [ngClass]="{'has-error': err}">
+              <input type="text" class="form-control input-sm" placeholder="Username" name="username" ngModel  #username="ngModel" autocapitalize="none" required/>
+            </div> &nbsp;
+            <div class="form-group" [ngClass]="{'has-error': err}">
+              <input type="password" class="form-control input-sm" placeholder="Password" name="password" ngModel  #password="ngModel" autocapitalize="none" required/>
+            </div>
+            &nbsp;&nbsp;<button type="submit" class="btn btn-sm btn-success">Login</button>
+          </form>
+        </div> 
+        <ul *ngIf="isLoggedIn()" class="new navbar-nav navbar-right">
+          <li><p class="navbar-text">Welcome</p></li>
+          <li><button class="navbar-btn btn-sm btn-info" (click)="logout()">Logout</button></li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+
+<router-outlet></router-outlet>

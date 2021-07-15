@@ -1,0 +1,32 @@
+<H1>Register</H1>
+<DIV *ngIf="message" class="alert alert-success" role="alert">
+    <P>{{ message}}</P>
+  </DIV>
+  <DIV *ngIf="err" class="alert alert-danger" role="alert">
+    {{error}}
+  </DIV>
+  <form  #registerForm="ngForm"  (ngSubmit)="registerUser(registerForm)">
+    <DIV class="form-group">
+      <label for="username">Username</label>
+      <input type="username" class="form-control" id="username" name="username"
+      placeholder="Username" ngModel  #username="ngModel" autocapitalize="none"/>
+    </DIV>
+    <DIV class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password"
+      placeholder="Password" ngModel  #password="ngModel" autocapitalize="none"/>
+    </DIV>
+    <DIV class="form-group">
+      <label for="password-repeat">Repeat Password</label>
+      ​
+      <input type="password" class="form-control" id="passwordrepeat" name="passwordRepeat" placeholder="Password" ngModel  #passwordRepeat="ngModel" autocapitalize="none"/>
+
+     
+    </DIV>
+    <DIV class="form-group">
+        <label for="name">Name</label>
+        <input type="name" class="form-control" id="name" name="name"
+        placeholder="Name" ngModel  #name="ngModel" autocapitalize="none"/>
+      </DIV>​
+  <BUTTON type="submit" class="btn btn-success">Register</BUTTON>​
+    </form>

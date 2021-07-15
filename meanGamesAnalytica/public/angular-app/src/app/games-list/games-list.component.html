@@ -1,0 +1,52 @@
+
+<div class="contents-games mygames container">
+    <div class="container">
+<div class="row">
+    <h1>Welcome to {{title}} application</h1>
+    
+<div  class="col-sm">
+
+
+<ul *ngFor="let game of games">
+    <li>
+        <a routerLink="/game/{{game._id}}"> {{game.title}} </a><br/>
+    </li>
+</ul>
+
+<br/>
+<button *ngIf="!analyticsVisible" (click)="viewAnalytics()" class="btn btn-primary">View Analytics</button>
+<button *ngIf="analyticsVisible" (click)="hideAnalytics()" class="btn btn-danger">Hide Analytics</button>
+</div>
+
+
+<div *ngIf="analyticsVisible" class="col-sm">
+
+    <fusioncharts
+    [chartConfig]=chartConfig
+    [dataSource]=dataSource >
+</fusioncharts>
+
+</div>
+
+</div>
+
+    <div class="row">
+        
+    <div class="col-sm">
+   
+    
+    </div>
+    
+    
+    <div *ngIf="analyticsVisible" class="col-sm">
+        <br/>
+        <fusioncharts
+        [chartConfig]=pieConfig
+        [dataSource]=pieSource >
+    </fusioncharts>
+    </div>
+    
+    </div>
+    </div>
+
+</div>
